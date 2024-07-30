@@ -1,19 +1,18 @@
-from collections import deque
-A, B = map(int,input().split())
-def b_calcul(A,B):
-    q = deque()
-    q.append([A,1])
-    while q:
-        cur, cnt = q.popleft()
+def calcul(A, B):
+    cnt = 0
+    while B > A:
+        if B % 2 == 0:
+            B //= 2
+        elif B % 10 == 1:
+            B //= 10
+        else:
+            break
+        cnt += 1
 
-        if cur == B:
-            return cnt
+    if A == B:
+        return cnt + 1
+    else:
+        return -1
 
-        if cur*2 <= B:
-            q.append([cur*2,cnt+1])
-
-        if int(str(cur)+'1') <= B:
-            q.append([int(str(cur)+'1'),cnt+1])
-    return -1
-
-print(b_calcul(A,B))
+A, B = map(int, input().split())
+print(calcul(A, B))
