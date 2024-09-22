@@ -1,12 +1,14 @@
-#1759 암호
+import sys
+input = sys.stdin.readline
+
 l,c = map(int,input().split())
 letters = sorted(list(map(str,input().split())))
 moeum = ['a','e','i','o','u']
 temp = []
 
-def back(idx,cn_mo, cn_ja):
+def back(idx, cn_mo, cn_ja):
     if len(temp) == l:
-        if cn_mo >=1 and cn_ja >=2:
+        if cn_mo>=1 and cn_ja>=2:
             print(''.join(temp))
         return
 
@@ -17,5 +19,6 @@ def back(idx,cn_mo, cn_ja):
         else:
             back(i+1, cn_mo, cn_ja+1)
         temp.pop()
+
 
 back(0,0,0)
