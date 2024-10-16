@@ -7,6 +7,7 @@ def solution(sizes):
         garo_fin = max(garo_fin, garo)
         sero_fin = max(sero_fin, sero)
     
-    answer = garo_fin*sero_fin
-        
+    answer = garo_fin * sero_fin 
+    
+    
     return answer
