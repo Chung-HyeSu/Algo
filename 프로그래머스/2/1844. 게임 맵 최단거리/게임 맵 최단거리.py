@@ -6,37 +6,31 @@ def bfs(maps):
     visited = [[False]*m for _ in range(n)]
     visited[0][0] = True
     
-    ty = n-1
-    tx = m-1
-
+    directy = [-1,1,0,0]
+    directx = [0,0,-1,1]
+    
     while q:
         y,x,cnt = q.popleft()
-        if y == ty and x == tx:
+        
+        if y==n-1 and x==m-1:
             return cnt
         
-        directy = [-1,1,0,0]
-        directx = [0,0,-1,1]
         for i in range(4):
-            dy = directy[i]+ y
-            dx = directx[i]+ x
-            if 0<=dy<n and 0<=dx<m and maps[dy][dx] == 1 and visited[dy][dx] == False:
+            dy = directy[i] + y
+            dx = directx[i] + x
+
+            if 0<=dy<n and 0<=dx<m and maps[dy][dx] == 1 and visited[dy][dx] == False: #1은 길, 0은 벽
                 visited[dy][dx] = True
                 q.append([dy,dx,cnt+1])
-
-    return -1
                 
+    return -1
         
-
+    
+    
 def solution(maps):
     global n,m
     
-    answer = 0
-    
-    n = len(maps) #행
-    m = len(maps[0]) #열
+    n = len(maps) #세로
+    m = len(maps[0]) #가로
     
     return bfs(maps)
-    
-
-    
-    
